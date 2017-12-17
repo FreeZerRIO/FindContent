@@ -1,11 +1,3 @@
-//
-//  main.c
-//  FindContent
-//
-//  Created by Алексей Баринов on 07.12.2017.
-//  Copyright © 2017 Era Company. All rights reserved.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +6,7 @@ int main(int argc, char *argv[]){
     
     FILE *fp;
     
-    char tmp[1024];             /* Размер может отличаться */
+    char tmp[1024];  //The size may be different
     char *split;
     char *substring;
     
@@ -23,20 +15,20 @@ int main(int argc, char *argv[]){
     int found = 0;
     int word = 0;
     
-    /* Проверяем кол-во введённых аргументов*/
+    //Check number of input arguments
     if(argc < 3 || argc > 3){
-        printf("Ошибка ввода\n\n");
+        printf("Input error\n");
         exit(1);
     }
     
-    /* Ищем файл */
+    //Looking for file
     if((fp = fopen(argv[1], "r")) == NULL){
-        printf("Файл не найден \n\n");
+        printf("File not found\n");
         return(0);
     }
     
     while(fgets(tmp, 1024, fp) != NULL){
-        /* Разделяем строки пробелами */
+        //Share the string with spaces
         split = strtok (tmp, " ");
         word = 0;
         
@@ -56,12 +48,12 @@ int main(int argc, char *argv[]){
         string++;
     }
     
-    /* Ничего не найденр */
+    //Nothing found
     if(!found){
-        printf("Нет совпадений\n\n");
+        printf("No matches\n\n");
     }
     
-    /* Закрыть файл*/
+    //Close the file
     if(fp){
         fclose(fp);
     }
